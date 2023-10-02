@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/worklogApp
+    username: admin
+    password: admin
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
