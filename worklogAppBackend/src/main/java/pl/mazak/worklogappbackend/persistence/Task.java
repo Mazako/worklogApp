@@ -32,6 +32,17 @@ public class Task {
     @Column(name = "time_worked", nullable = false)
     private Instant timeWorked;
 
+    public Task() {
+
+    }
+
+    public Task(LocalDate date, String name, String jiraCode, Instant timeWorked) {
+        this.date = date;
+        this.name = name;
+        this.jiraCode = jiraCode;
+        this.timeWorked = timeWorked;
+    }
+
     public Long getId() {
         return id;
     }

@@ -26,6 +26,16 @@ public class DailyTime {
     @Column(name = "end_hour", nullable = false)
     private LocalTime endHour;
 
+    public DailyTime() {
+
+    }
+
+    public DailyTime(LocalDate date, LocalTime startHour, LocalTime endHour) {
+        this.date = date;
+        this.startHour = startHour;
+        this.endHour = endHour;
+    }
+
     public Long getId() {
         return id;
     }
