@@ -1,14 +1,10 @@
 package pl.mazak.worklogappbackend.daily_time;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
-import org.springframework.test.context.event.annotation.BeforeTestExecution;
 import pl.mazak.worklogappbackend.DockerDbTestCase;
 import pl.mazak.worklogappbackend.persistence.DailyTime;
 import pl.mazak.worklogappbackend.persistence.DailyTimeRepository;
@@ -19,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static pl.mazak.worklogappbackend.daily_time.EditValue.END_HOUR;
 import static pl.mazak.worklogappbackend.daily_time.EditValue.START_HOUR;
 
@@ -74,6 +71,15 @@ class DailyTimeServiceTest extends DockerDbTestCase {
         assertThat(day2.get().getStartHour()).isEqualTo(LocalTime.of(10, 0));
         assertThat(day2.get().getEndHour()).isEqualTo(LocalTime.of(19, 0));
 
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDayExists() {
+        var throwable = catchThrowable(() -> dailyTimeService.addDay(LocalDate.of(2023, 12, 4),
+                LocalTime.NOON,
+                LocalTime.MIDNIGHT));
+
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

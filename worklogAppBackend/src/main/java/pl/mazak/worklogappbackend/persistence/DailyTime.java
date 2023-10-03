@@ -16,7 +16,7 @@ public class DailyTime {
     private Long id;
 
     @NotNull
-    @Column(name = "date", nullable = false)
+    @Column(name = "date", nullable = false, unique = true)
     private LocalDate date;
 
     @NotNull

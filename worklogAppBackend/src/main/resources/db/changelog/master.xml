@@ -5,5 +5,6 @@
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <include file="classpath:db/changelog/001-create-day-table.xml" />
     <include file="classpath:db/changelog/002-create-tasks-database.xml" />
+    <include file="classpath:db/changelog/003-day-table-date-unique.xml" />
 
 </databaseChangeLog>

@@ -23,6 +23,10 @@ class DailyTimeServiceImpl implements DailyTimeService {
     @Override
     public DailyTime addDay(LocalDate date, LocalTime start, LocalTime end) {
         var dailyTime = new DailyTime(date, start, end);
+        Optional<DailyTime> dailyTimeByDate = dailyTimeRepository.findDailyTimeByDate(date);
+        if (dailyTimeByDate.isPresent()) {
+            throw new IllegalArgumentException("Given day exists: " + date);
+        }
         return dailyTimeRepository.save(dailyTime);
     }
 
