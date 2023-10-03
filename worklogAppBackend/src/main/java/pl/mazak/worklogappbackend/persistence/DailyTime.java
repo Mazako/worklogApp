@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "daily_time")
@@ -68,4 +69,26 @@ public class DailyTime {
         this.endHour = endHour;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DailyTime dailyTime = (DailyTime) o;
+        return Objects.equals(id, dailyTime.id) && Objects.equals(date, dailyTime.date) && Objects.equals(startHour, dailyTime.startHour) && Objects.equals(endHour, dailyTime.endHour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, startHour, endHour);
+    }
+
+    @Override
+    public String toString() {
+        return "DailyTime{" +
+                "id=" + id +
+                ", date=" + date +
+                ", startHour=" + startHour +
+                ", endHour=" + endHour +
+                '}';
+    }
 }

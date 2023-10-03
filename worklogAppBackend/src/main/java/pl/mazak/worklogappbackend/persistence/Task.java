@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tasks")
@@ -83,4 +84,16 @@ public class Task {
         this.timeWorked = timeWorked;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(date, task.date) && Objects.equals(name, task.name) && Objects.equals(jiraCode, task.jiraCode) && Objects.equals(timeWorked, task.timeWorked);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, name, jiraCode, timeWorked);
+    }
 }
