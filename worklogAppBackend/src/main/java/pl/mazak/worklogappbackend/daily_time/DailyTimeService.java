@@ -13,6 +13,5 @@ public interface DailyTimeService {
     Optional<DailyTime> getDay(LocalDate date);
     List<DailyTime> getDaysByMonth(Month month, int year);
     Optional<DailyTime> updateDay(LocalDate date, LocalTime value, EditValue editValue);
-
     String generateHoursReport(Month month, int year);
 }

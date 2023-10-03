@@ -1,0 +1,13 @@
+### Basic POST to add some values
+POST http://localhost:8080/dailyTime/add
+Content-Type: application/json
+
+{
+    "date": "2001-03-12",
+    "start": "08:00",
+    "end": "16:00"
+}
+
+### Basic GET by date
+GET http://localhost:8080/dailyTime/get?date=2001-03-12
+Content-Type: application/json

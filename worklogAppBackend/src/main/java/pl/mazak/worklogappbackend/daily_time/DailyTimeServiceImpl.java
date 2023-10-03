@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class DailyTimeServiceImpl implements DailyTimeService {
+class DailyTimeServiceImpl implements DailyTimeService {
     private final DailyTimeRepository dailyTimeRepository;
 
     public DailyTimeServiceImpl(DailyTimeRepository dailyTimeRepository) {
